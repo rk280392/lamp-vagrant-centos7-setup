@@ -1,5 +1,9 @@
 This helps to setup centos7 machine with lamp setup. At the end you will have a centos webserver setup with a working website.
 
+Prerequisite
+Download and install vagrant on your system. You can use the url to install it.
+https://www.vagrantup.com/docs/installation/
+
 1- Create a workspace on your system.
 
 2 - cd to the Directory.
