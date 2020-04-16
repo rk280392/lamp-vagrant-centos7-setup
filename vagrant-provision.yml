@@ -1,0 +1,45 @@
+
+---
+- hosts: all
+  become: yes
+  tasks:
+          - name: Install necessary packages
+            yum:
+                    name:
+                            - net-tools
+                            - vim
+                            - python3
+          - name: Create a user
+            user:
+                    name: rajesh
+                    state: present
+                    # password = rajesh123 enrypted using "mkpasswd --method=sha-512". you can use your username password.
+                    password: $6$5OzMrxRKlApEq$5x3UHakqQ.51JWw2cZFbSjQPY5k9z/gBn8c.9XsCrI39YPEn7uRLHfXDnL.edxCyjIZfEjXfBdiOShbXwnBUJ1
+                    shell: /bin/bash
+                    system: yes
+                    createhome: yes
+          - name: Adding user into sudoers file
+            lineinfile:
+                    path: /etc/sudoers
+                    insertafter: '^# User privilege'
+                    line: rajesh ALL=(ALL:ALL) ALL
+                    state: present
+          - name: getting rsa of github
+            shell: ssh-keyscan -t rsa github.com
+            register: sshrsa
+            # - debug: msg="{{ sshrsa }}"
+          - name: Adding github.com into authorized_hosts
+            lineinfile:
+                    path: ~/.ssh/known_hosts
+                    line: "{{ sshrsa.stdout }}"
+                    state: present
+                    create: yes
+          - name: Change password authentication to yes
+            replace:
+                    path: /etc/ssh/sshd_config
+                    regexp: 'PasswordAuthentication no'
+                    replace: 'PasswordAuthentication yes'
+          - name: Restarting sshd
+            service:
+                    name: sshd
+                    state: restarted
