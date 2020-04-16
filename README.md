@@ -4,6 +4,9 @@ Prerequisite
 Download and install vagrant on your system. You can use the url to install it.
 https://www.vagrantup.com/docs/installation/
 
+Download and Install ansible on your host system. Please use the url to download for your host OS.
+https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
+
 1 - create a workspace on your system.
 
 2 - cd to the Directory.
