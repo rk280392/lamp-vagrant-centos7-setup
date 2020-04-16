@@ -4,11 +4,11 @@ Prerequisite
 Download and install vagrant on your system. You can use the url to install it.
 https://www.vagrantup.com/docs/installation/
 
-1- Create a workspace on your system.
+1 - create a workspace on your system.
 
 2 - cd to the Directory.
 
-3 - Clone the repository.
+3 - clone the repository.
 
 4 - run Vagrantfile --> Vagrant up.
 
