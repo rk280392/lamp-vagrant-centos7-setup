@@ -1,6 +1,6 @@
 This helps to setup centos7 machine with lamp setup. At the end you will have a centos webserver setup with a working website.
 
-1- Create a workspace on your system
+1- Create a workspace on your system\n
 2 - cd to the Directory
 3 - Clone the repository
 4 - run Vagrantfile --> Vagrant up
